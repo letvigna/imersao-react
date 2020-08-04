@@ -1,7 +1,7 @@
 import React from 'react';
 import Logo from '../../assets/logo_mint.png';
 import './Menu.css';
-import ButtonLink from '../ButtonLink';
+import Button from '../Button';
 
 function Menu() {
   return (
@@ -13,12 +13,14 @@ function Menu() {
           alt="Letflix logo."
         />
       </a>
-      <ButtonLink
+
+      <Button
+        as="a"
         className="ButtonLink"
         href="/"
       >
         Novo vídeo
-      </ButtonLink>
+      </Button>
     </nav>
   );
 }
