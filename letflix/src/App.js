@@ -7,7 +7,7 @@ import dadosIniciais from './data/dados_iniciais.json';
 
 function App() {
   return (
-    <div>
+    <div style={{ background: "#978D84" }}>
       <Menu />
 
       <BannerMain
