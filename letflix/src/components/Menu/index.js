@@ -12,6 +12,9 @@ function Menu() {
           alt="Letflix logo."
         />
       </a>
+      <a className="ButtonLink" href="/">
+        Novo Vídeo
+      </a>
     </nav>
   );
 }
