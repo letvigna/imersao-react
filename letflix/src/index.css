@@ -14,9 +14,10 @@
   --backEnd: #00C86F;
 
   --primary: #F4F6F5;
-  --green: #87BD81;
-  --orange: #EA8f5A;
   --darkBrown: #504444;
+  --lightBrown: #978D84;
+  --orange: #EA8f5A;
+  --green: #87BD81;
 }
 
 html,
@@ -27,4 +28,10 @@ body {
 
 a {
   color: inherit;
+}
+
+#root {
+  min-height: calc(100vh - var(--bodyPaddingTop));
+  display: flex;
+  flex-direction: column;
 }
