@@ -14,9 +14,10 @@ function CadastroCategoria() {
 
   const handleChange = event => {
     /*
-      Cria variáveis com o mesmo nome do atributo desejado:
-        → getAttribute = event.target.getAttribute()
-        → value = event.target.value
+    ===+ Destructuring +===
+    Cria variáveis com o mesmo nome do atributo desejado:
+      → getAttribute = event.target.getAttribute()
+      → value = event.target.value
 
     const { getAttribute, value } = event.target;
     setNovaCategoria({
@@ -36,7 +37,7 @@ function CadastroCategoria() {
 
   return (
     <DefaultTemplate>
-      <h1>Cadastro de Categoria: {novaCategoria.nome}</h1>
+      <h1>Cadastro de Categoria</h1>
       <form onSubmit={event => {
         event.preventDefault();
 
