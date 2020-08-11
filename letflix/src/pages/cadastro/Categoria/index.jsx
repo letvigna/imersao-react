@@ -2,17 +2,18 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import DefaultTemplate from '../../../components/DefaultTemplate';
 import FormField from '../../../components/FormField';
+import Button from '../../../components/Button';
 
 function CadastroCategoria() {
   const categoria = {
     nome: '',
     descricao: '',
-    cor: ''
+    cor: '',
   };
   const [novaCategoria, setNovaCategoria] = useState(categoria);
   const [categorias, setCategorias] = useState([]);
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     /*
     ===+ Destructuring +===
     Cria variáveis com o mesmo nome do atributo desejado:
@@ -25,31 +26,37 @@ function CadastroCategoria() {
       [getAttribute('name')]: value,
     });
     */
-
     const campo = event.target.getAttribute('name');
     const valor = event.target.value;
-
     setNovaCategoria({
       ...novaCategoria,
       [campo]: valor,
     });
-  }
+  };
 
   return (
     <DefaultTemplate>
       <h1>Cadastro de Categoria</h1>
-      <form onSubmit={event => {
+      <form onSubmit={(event) => {
         event.preventDefault();
 
         // Adiciona a nova categoria ao array de categorias
         setCategorias([
           ...categorias,
-          novaCategoria
+          novaCategoria,
         ]);
 
         // "Limpa" o formulário com os valores default
         setNovaCategoria(categoria);
-      }}>
+      }}
+      >
+        {/*
+        Se quiser usar:
+          input => passar o tipo do input através do "type"
+          outra tag => passar a tag desejada através do "as"
+        */}
+
+        {/* Tag <input> do tipo "text" */}
         <FormField
           label="Nome"
           name="nome"
@@ -57,13 +64,17 @@ function CadastroCategoria() {
           value={novaCategoria.nome}
           onChange={handleChange}
         />
+
+        {/* Tag <textarea> */}
         <FormField
           label="Descrição"
           name="descricao"
-          type="text"
+          as="textarea"
           value={novaCategoria.descricao}
           onChange={handleChange}
         />
+
+        {/* Tag <input> do tipo "color" */}
         <FormField
           label="Cor"
           name="cor"
@@ -73,21 +84,10 @@ function CadastroCategoria() {
         />
 
         <br />
-        <button>
+        <Button>
           Cadastrar
-        </button>
+        </Button>
       </form>
-      {/*
-      <ul>
-        {categorias.map((categoria, indice) => {
-          return (
-            <li key={`${categoria}${indice}`}>
-              {categoria.nome}
-            </li>
-          )
-        })}
-      </ul>
-      */}
       <br />
       <Link to="/">
         Ir para home
