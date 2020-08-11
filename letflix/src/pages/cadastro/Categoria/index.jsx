@@ -69,7 +69,8 @@ function CadastroCategoria() {
         <FormField
           label="Descrição"
           name="descricao"
-          as="textarea"
+          type="textarea"
+          // as="textarea"
           value={novaCategoria.descricao}
           onChange={handleChange}
         />
