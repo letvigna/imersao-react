@@ -14,18 +14,6 @@ function CadastroCategoria() {
   const [categorias, setCategorias] = useState([]);
 
   const handleChange = (event) => {
-    /*
-    ===+ Destructuring +===
-    Cria variáveis com o mesmo nome do atributo desejado:
-      → getAttribute = event.target.getAttribute()
-      → value = event.target.value
-
-    const { getAttribute, value } = event.target;
-    setNovaCategoria({
-      ...novaCategoria,
-      [getAttribute('name')]: value,
-    });
-    */
     const campo = event.target.getAttribute('name');
     const valor = event.target.value;
     setNovaCategoria({
@@ -39,24 +27,15 @@ function CadastroCategoria() {
       <h1>Cadastro de Categoria</h1>
       <form onSubmit={(event) => {
         event.preventDefault();
-
         // Adiciona a nova categoria ao array de categorias
         setCategorias([
           ...categorias,
           novaCategoria,
         ]);
-
         // "Limpa" o formulário com os valores default
         setNovaCategoria(categoria);
       }}
       >
-        {/*
-        Se quiser usar:
-          input => passar o tipo do input através do "type"
-          outra tag => passar a tag desejada através do "as"
-        */}
-
-        {/* Tag <input> do tipo "text" */}
         <FormField
           label="Nome"
           name="nome"
@@ -65,17 +44,14 @@ function CadastroCategoria() {
           onChange={handleChange}
         />
 
-        {/* Tag <textarea> */}
         <FormField
           label="Descrição"
           name="descricao"
           type="textarea"
-          // as="textarea"
           value={novaCategoria.descricao}
           onChange={handleChange}
         />
 
-        {/* Tag <input> do tipo "color" */}
         <FormField
           label="Cor"
           name="cor"
