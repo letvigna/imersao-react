@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import DefaultTemplate from '../../../components/DefaultTemplate';
 import FormField from '../../../components/FormField';
@@ -22,9 +22,19 @@ function CadastroCategoria() {
     });
   };
 
+  useEffect(() => {
+    const URL = 'http://localhost:8080/categorias';
+    fetch(URL)
+      .then(async (res) => {
+        const json = await res.json();
+        setCategorias([...json]);
+      });
+  }, []);
+
   return (
     <DefaultTemplate>
       <h1>Cadastro de Categoria</h1>
+
       <form onSubmit={(event) => {
         event.preventDefault();
         // Adiciona a nova categoria ao array de categorias
@@ -61,11 +71,29 @@ function CadastroCategoria() {
         />
 
         <br />
+
         <Button>
           Cadastrar
         </Button>
       </form>
+
+      {categorias.length === 0 && (
+        <div>
+          <br />
+          Loading...
+        </div>
+      )}
+
       <br />
+
+      <ul>
+        {categorias.map((cat) => (
+          <li key={`${cat.id}`}>
+            {cat.titulo}
+          </li>
+        ))}
+      </ul>
+
       <Link to="/">
         Ir para home
       </Link>
